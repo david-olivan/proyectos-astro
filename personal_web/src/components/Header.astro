@@ -1,0 +1,38 @@
+---
+const {title, gradientFrom, gradientTo} = Astro.props;
+
+type Props = {
+    title: string,
+    gradientFrom: string,
+    gradientTo: string
+};
+---
+
+<div class="flex-row-center">
+    <h1 class="flex-row-center">
+        {title}
+    </h1>
+</div>
+
+<style define:vars={{gradientFrom, gradientTo}}>
+    div {
+        background-image: linear-gradient(
+            to top right,
+            var(--gradientFrom),
+            var(--gradientTo)
+        );
+
+        border-radius: 10px;
+        height: 50vh;
+        width: 100%;
+        padding: 5px 0;        
+
+        h1 {
+            background: var(--background);
+            margin: 5px;
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+</style>

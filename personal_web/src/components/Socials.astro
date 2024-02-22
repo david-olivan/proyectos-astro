@@ -1,0 +1,53 @@
+---
+const socials = [
+    {
+        href: "mailto:",
+        src: "/socials/email.svg",
+    },
+    {
+        href: "https://github.com",
+        src: "/socials/github.svg"
+    },
+    {
+        href: "https://instagram.com",
+        src: "/socials/instagram.svg"
+    },
+    {
+        href: "https://wordpress.org",
+        src: "/socials/wordpress.svg"
+    }
+]
+---
+
+<div>
+    {
+        socials.map((item) => (
+            <a href={item.href}>
+                <img src={item.src} alt="">
+            </a>
+        ))
+    }    
+</div>
+
+<style>
+    a {
+        margin: 0;
+        padding: 0;        
+    }
+
+    div {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    svg, img {
+        width: 48px;
+        transition: all .2s ease-in-out;        
+
+        &:hover {
+            transform: scale(.9);
+        }
+    }
+</style>

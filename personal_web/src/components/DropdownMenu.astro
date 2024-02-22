@@ -1,0 +1,67 @@
+---
+
+type Props = {
+    items: {label: string, href: string}[];
+}
+
+const { items } = Astro.props;
+---
+
+<button class="btn-desplegable">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25px" fill="black" viewBox="0 0 24 24"  stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+    </svg>
+    <ul>
+        {items.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+        ))}
+    </ul> 
+</button>
+
+<style>
+    button,
+    ul {
+        display: none;
+    }
+
+    .btn-desplegable {
+        cursor: pointer;
+        border-radius: 10px;
+        border: 0;
+        padding: 5px 10px;
+        transition: all .2s ease-in-out;
+
+        &:hover ul {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position: absolute;
+            top: 15vh;
+            right: 5vw;
+            background: var(--grey-400);
+            list-style: none;
+            border-radius: 10px;
+            padding: 0;
+            margin: 0;
+
+            li {
+                opacity: .8;
+                padding: 20px 0px;
+                margin: 0;
+            }
+
+            a {
+                padding: 20px;
+                color: var(--background);
+                border-radius: 10px;
+                text-decoration: none;
+            }
+        }
+    }    
+
+    @media screen and (max-width: 600px) {
+        button {
+            display: block;
+        }
+    }
+</style>

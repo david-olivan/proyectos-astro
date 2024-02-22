@@ -24,6 +24,9 @@ const { title, to, gradientFrom, gradientTo } = Astro.props;
         /** Local CSS variable reused below */
         --radius: 10px;
 
+        width: 30%;
+        height: fit-content;
+
         background-image: linear-gradient(
             to right,
             var(--gradientFrom),
@@ -46,6 +49,7 @@ const { title, to, gradientFrom, gradientTo } = Astro.props;
         border-radius: var(--radius);
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
     }
 
     .card__title {
@@ -60,5 +64,11 @@ const { title, to, gradientFrom, gradientTo } = Astro.props;
         font-size: 1.2rem;
         color: var(--grey-900);
         margin: auto 0 0 auto;
+    }
+
+    @media screen and (max-width: 600px) {
+        .card {
+            width:100%;
+        }
     }
 </style>

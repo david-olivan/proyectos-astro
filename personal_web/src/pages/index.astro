@@ -1,30 +1,16 @@
 ---
 import Main from "@layouts/Main.astro";
 import Cards from "@components/Cards.astro";
+import Profile from "@components/Profile.astro";
+import Header from "@components/Header.astro";
 
-const profilePicture = "https://i.imgur.com/JPGFE75.jpg";
-const blogs = await Astro.glob<{
-	poster: string;
-	title: string;
-	subtitle: string;
-}>("../pages/blogs/*.md");
+const title = "Frau Katarina";
 ---
-<Main title="Frau Katarina">
-	<div class="profile">
-		<img 
-			src={profilePicture}
-			alt="Frau Katerina's headshot."
-			width="100px"
-			height="100px"
-		/>
-		<div class="profile-details">
-			<h1>Frau Katerina</h1>
-			<h2>VP of Engineering at Goooogle</h2>
-			<p>
-				Helping developers be excellent and succeed at building scalable products.
-			</p>
-		</div>
-	</div>
+<Main {title}>
+	
+	<Header {title} gradientFrom="#818cf8" gradientTo="#6ee7b7" />
+
+	<hr>
 
 	<Cards
 		cards={[
@@ -36,9 +22,27 @@ const blogs = await Astro.glob<{
 			},
 			{
 				title: "A summary of my work history",
-				gradientFrom: "#fde68a",
-				gradientTo: "#fca5a5",
+				gradientFrom: "#d8b4fe",
+				gradientTo: "#6ee7b7",
 				to: "/work-summary",
+			},
+			{
+				title: "What I do beyond technology",
+				gradientFrom: "#6ee7b7",
+				gradientTo: "#9333ea",
+				to: "/beyond-tech",
+			},
+			{
+				title: "What I do beyond technology",
+				gradientFrom: "#6ee7b7",
+				gradientTo: "#9333ea",
+				to: "/beyond-tech",
+			},
+			{
+				title: "What I do beyond technology",
+				gradientFrom: "#6ee7b7",
+				gradientTo: "#9333ea",
+				to: "/beyond-tech",
 			},
 			{
 				title: "What I do beyond technology",
@@ -49,82 +53,8 @@ const blogs = await Astro.glob<{
 		]}
 	/>
 
-	<div class="featured-blogs">
-		<h3 class="featured-blogs__title">Featured Blogs</h3>
-		<p class="featured-blogs__description">
-			Opinion pieces that will change everything you know about web development.
-		</p>
-	</div>
+	<hr>
 
-	<ol class="blogs">
-		{
-			blogs.map((blog) => (
-				<li class="blogs__list">
-					<a href={blog.url} class="blog__link">
-						{blog.frontmatter.title}
-					</a>
-				</li>
-			))
-		}
-	</ol>
+	<Profile />
+
 </Main>
-
-<style>
-	.profile {
-		display: flex;
-		align-items: flex-start;
-		flex-wrap: wrap;
-		padding: 1rem 0 3rem;
-
-		img {
-			border-radius: 50%;
-			margin: 0 2rem 1rem 0;
-		}
-	}
-
-	.profile-details {
-		flex: 1 0 300px;
-
-		> h1 {
-			margin-top: 0;
-		}
-	}
-
-	.featured-blogs {
-		margin: 0;
-		padding: 3rem 0 0 0;
-	}
-
-	.featured-blogs__title {
-		font-size: 2rem;
-		color: var(--gray-900);
-	}
-
-	.featured-blogs__description {
-		margin-top: -1.2rem;
-	}
-
-	.blogs {
-		font-size: 1rem;
-		font-weight: 500;
-	}
-
-	.blogs__list {
-		border-bottom: 1px solid;
-		border-color: var(--gray-200);
-	}
-
-	.blog__link {
-		opacity: 1;
-		height: 100%;
-		display: block;
-		padding: 1rem 0;
-		color: var(--gray-200);
-		text-decoration: none;
-		transition: opacity .2s ease-in-out;
-
-		&:hover {
-			opacity: .7;
-		}
-	}
-</style>

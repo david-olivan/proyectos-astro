@@ -1,9 +1,16 @@
-<footer>&copy; Frau Katerina</footer>
+<footer>&copy; <span id="year">2024</span> Frau Katerina</footer>
 
 <style>
     footer {
         padding: 3rem 0;
         text-align: center;
         font-size: .9rem;
+
+        margin-top: auto;
     }
 </style>
+
+<script>
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) yearSpan.innerHTML = String(new Date().getFullYear());
+</script>

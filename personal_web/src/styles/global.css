@@ -36,7 +36,7 @@ h1 + h2 {
 p,
 li {
     font-size: 1rem;
-    color: var(--gray-400);
+    color: var(--grey-400);
     opacity: .8;
 }
 
@@ -45,6 +45,35 @@ li {
 }
 
 main {
-    max-width: 40rem;
+    max-width: 80vw;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
     margin: auto;
+}
+
+hr {
+    width: 10vw;
+    height: 3px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--grey-400);
+    margin: 5vh auto;
+}
+
+article a {
+    color: var(--grey-400);
+
+    &:hover {
+        color: var(--grey-900);
+    }
+}
+
+.flex-row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

@@ -2,7 +2,8 @@
 // Import the type utility for the markdown layout props
 import type { MarkdownLayoutProps } from "astro"
 // Import the base layout: Main.astro
-import Main from "./Main.astro"
+import Main from "./Main.astro";
+import Socials from "@components/Socials.astro";
 
 // Defined the props type
 type Props = MarkdownLayoutProps<{
@@ -17,22 +18,27 @@ const { poster, title, subtitle } = Astro.props.frontmatter;
 ---
 
 <Main title="Frau Katarina | Blog">
-    <figure class="figure">
-        <img 
-            src={poster}
-            alt=""
-            width="100%"
-            height="480px"
-        />
-        <figcaption>
-            Poster image for {title.toLowerCase()}
-        </figcaption>
-    </figure>
+    <article>
+        <figure class="figure">
+            <img 
+                src={poster}
+                alt=""
+                width="100%"
+                height="480px"
+            />
+            <figcaption>
+                Poster image for {title.toLowerCase()}
+            </figcaption>
+        </figure>
 
-    <h1>{title}</h1>
-    <h2>{subtitle}</h2>
+        <h1>{title}</h1>
+        <h2>{subtitle}</h2>
 
-    <slot />
+        <slot />   
+    </article>
+    
+
+    <Socials />
 </Main>
 
 <style>

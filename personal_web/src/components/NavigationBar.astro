@@ -1,29 +1,75 @@
 ---
 import ThemeToggler from "./ThemeToggler.astro"
+import DropdownMenu from "./DropdownMenu.astro"
+
+const navMenu = [
+    {
+        label: "Philosophies",
+        href: "/philosophies"
+    },
+    {
+        label: "Blog",
+        href: "/blog",
+        nested: true
+    },
+    {
+        label: "Beyond technology",
+        href: "/beyond-tech"
+    }
+]
+
+const dropdownItems = [
+    {
+        label: "Philosophies",
+        href: "/philosophies"
+    },
+    {
+        label: "Blog",
+        href: "/blog",
+        nested: true
+    },
+    {
+        label: "Beyond technology",
+        href: "/beyond-tech"
+    }
+]
 ---
 
 <nav>
+    <a href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.5 3.798v5.02a3 3 0 0 1-.879 2.121l-2.377 2.377a9.845 9.845 0 0 1 5.091 1.013 8.315 8.315 0 0 0 5.713.636l.285-.071-3.954-3.955a3 3 0 0 1-.879-2.121v-5.02a23.614 23.614 0 0 0-3 0Zm4.5.138a.75.75 0 0 0 .093-1.495A24.837 24.837 0 0 0 12 2.25a25.048 25.048 0 0 0-3.093.191A.75.75 0 0 0 9 3.936v4.882a1.5 1.5 0 0 1-.44 1.06l-6.293 6.294c-1.62 1.621-.903 4.475 1.471 4.88 2.686.46 5.447.698 8.262.698 2.816 0 5.576-.239 8.262-.697 2.373-.406 3.092-3.26 1.47-4.881L15.44 9.879A1.5 1.5 0 0 1 15 8.818V3.936Z" clip-rule="evenodd" />
+        </svg>
+    </a>
+    
     <ul>
-        <li>
-            <a href="/">Home</a>
-        </li>
-
-        <li>
-            <a href="/philosophies">Philosophies</a>
-        </li>
-
-        <li>
-            <a href="/beyond-tech">Beyond technology</a>
-        </li>
+        {navMenu.map((item) => (
+            <li>
+                {(item.nested === true)
+                ? <a class="dropdown-toggle" href={item.href}>{item.label}</a>
+                : <a href={item.href}>{item.label}</a>}
+            </li>
+        ))}            
     </ul>
+    <DropdownMenu items={dropdownItems} />
     <ThemeToggler />
 </nav>
 
 <style>
     nav {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
+        gap: 2px;
         padding: 2rem 0;
+        
+        a {
+            margin-right: auto;
+
+            svg {
+                fill: var(--grey-400);
+                width: 50px;
+            }
+        } 
     }
 
     ul {
@@ -37,21 +83,31 @@ import ThemeToggler from "./ThemeToggler.astro"
         opacity: .8;
         list-style: none;
         font-size: .95rem;
-    }
+        
+        a {
+            color: var(--grey-400);
+            padding: .5rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
 
-    a {
-        color: var(--grey-400);
-        padding: .5rem 1rem;
-        border-radius: 10px;
-        text-decoration: none;
+            &:hover {
+                color: var(--grey-900);
+            }
 
-        &:hover {
-            color: var(--grey-900);
+            &.active {
+                background: var(--grey-900);
+                color: var(--background);
+            }
+        }      
+    }    
+
+    @media screen and (max-width: 600px) {
+        ul {
+            display: none;
         }
 
-        &.active {
-            background: var(--grey-900);
-            color: var(--background);
+        .no-mobile {
+            display: none;
         }
     }
 </style>

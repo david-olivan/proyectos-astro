@@ -1,0 +1,41 @@
+---
+const profilePicture = "https://i.imgur.com/JPGFE75.jpg";
+---
+
+<div class="profile">
+    <img 
+        src={profilePicture}
+        alt="Frau Katerina's headshot."
+        width="100px"
+        height="100px"
+    />
+    <div class="profile-details">
+        <h1>Frau Katerina</h1>
+        <h2>VP of Engineering at Goooogle</h2>
+        <p>
+            Helping developers be excellent and succeed at building scalable products.
+        </p>
+    </div>
+</div>
+
+<style>
+	.profile {
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		padding: 1rem 0 3rem;
+
+		img {
+			border-radius: 50%;
+			margin: 0 2rem 1rem 0;
+		}
+	}
+
+	.profile-details {
+		flex: 1 0 300px;
+
+		> h1 {
+			margin-top: 0;
+		}
+	}
+</style>
